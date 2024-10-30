@@ -26,9 +26,7 @@ function getProjects(req, res) {
             }
             else {
                 // Handle other types of errors (in case it's not an Error object)
-                res
-                    .status(500)
-                    .json({
+                res.status(500).json({
                     message: "An unknown error occurred while retrieving projects",
                 });
             }
@@ -52,11 +50,17 @@ function createProject(req, res) {
         catch (error) {
             // Check if the error is an instance of the Error object
             if (error instanceof Error) {
-                res.status(500).json({ message: `Error creating project: ${error.message}` });
+                res
+                    .status(500)
+                    .json({ message: `Error creating project: ${error.message}` });
             }
             else {
                 // Handle other types of errors (in case it's not an Error object)
-                res.status(500).json({ message: "An unknown error occurred while retrieving projects" });
+                res
+                    .status(500)
+                    .json({
+                    message: "An unknown error occurred while retrieving projects",
+                });
             }
         }
     });
